@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ecu-tests"
+version = "0.1.0"
+description = "A tiny fake ECU and pytest exercises using python-can's virtual bus"
+requires-python = ">=3.10"
+dependencies = ["python-can>=4.6,<5"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
