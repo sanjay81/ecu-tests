@@ -4,6 +4,8 @@ A practice project: pytest tests for a fake ECU that answers simplified UDS requ
 I built it to practise **reviewing and validating AI-generated tests** (Codex in VS Code), not just generating them.
 All data is synthetic.
 
+Related project: [log-triage](https://github.com/sanjay81/log-triage), a companion project for investigating synthetic logs.
+
 ## What it shows
 
 - Requirements-based tests with traceability (`REQ-001` to `REQ-005` in `docs/requirements.md`, referenced in each test docstring)
