@@ -1,5 +1,8 @@
 # ECU Test Validation Lab
 
+[![ECU Test CI](https://github.com/sanjay81/ecu-tests/actions/workflows/tests.yml/badge.svg)](https://github.com/sanjay81/ecu-tests/actions/workflows/tests.yml)
+
+
 A clean-room automotive testing project for **reviewing and validating AI-generated tests**, rather than simply generating them.
 
 The repository uses pytest against a synthetic ECU that answers simplified UDS requests over a virtual CAN bus. All requirements, traffic, and test data are synthetic and contain no proprietary automotive code.
