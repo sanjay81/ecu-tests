@@ -1,18 +1,47 @@
-# ecu-tests
+# ECU Test Validation Lab
 
-A practice project: pytest tests for a fake ECU that answers simplified UDS requests over a virtual CAN bus.
-I built it to practise **reviewing and validating AI-generated tests** (Codex in VS Code), not just generating them.
-All data is synthetic.
+A clean-room automotive testing project for **reviewing and validating AI-generated tests**, rather than simply generating them.
 
-Related project: [log-triage](https://github.com/sanjay81/log-triage), a companion project for investigating synthetic logs.
+The repository uses pytest against a synthetic ECU that answers simplified UDS requests over a virtual CAN bus. All requirements, traffic, and test data are synthetic and contain no proprietary automotive code.
 
-## What it shows
+> **Portfolio focus:** Automotive test automation · requirements traceability · UDS/CAN concepts · pytest · AI-assisted engineering · mutation testing
 
-- Requirements-based tests with traceability (`REQ-001` to `REQ-005` in `docs/requirements.md`, referenced in each test docstring)
-- Rules for the AI tool in `AGENTS.md` (no `time.sleep`, seeded tests, requirement IDs, do not change the ECU to make a test pass)
-- Testing non-deterministic timing with a statistical budget instead of a single pass or fail
-- Mutation testing: breaking the ECU on purpose to check whether the tests notice
-- A log of where the AI went wrong: [`ai_mistakes.md`](ai_mistakes.md)
+## What this project demonstrates
+
+- Requirements-based tests with traceability from `REQ-001` to `REQ-005`.
+- Synthetic UDS request/response testing over a virtual CAN bus.
+- Explicit instructions for AI coding agents in `AGENTS.md`.
+- Review of AI-generated tests instead of trusting generated output.
+- Statistical handling of non-deterministic timing.
+- Mutation testing by deliberately breaking ECU behavior.
+- Documentation of AI mistakes and the engineering checks that exposed them.
+
+Related project: [AI-Assisted Log Triage](https://github.com/sanjay81/log-triage).
+
+## Engineering principle
+
+A passing generated test suite does **not** prove that the tests are useful. This project deliberately changes the implementation and checks whether the tests detect the defect. It also records cases where AI-generated changes hid or weakened the behavior that was supposed to be tested.
+
+## Test model
+
+```text
+Synthetic requirements
+        |
+        v
+ pytest test suite <---- AGENTS.md rules for AI coding agents
+        |
+        v
+ Minimal UDS client
+        |
+        v
+ Virtual CAN bus
+        |
+        v
+ Synthetic ECU
+        |
+        v
+ Mutation + timing validation
+```
 
 ## Setup
 
@@ -67,3 +96,4 @@ Expected: 15 passed, 1 xfailed (the xfail is intentional, see below).
 - Timing numbers depend on the machine running the tests.
 - The regression guard's 15% exceedance budget is an assumption, not a requirement.
 - Mutations were applied by hand, not with a mutation testing tool.
+
